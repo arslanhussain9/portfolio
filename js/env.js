@@ -3,5 +3,5 @@
 window.ENV = {
   EMAILJS_SERVICE_ID: 'service_i1te8ne',
   EMAILJS_TEMPLATE_ID: 'template_x2n220e',
-  EMAILJS_PUBLIC_KEY: '65BWoaYnJTuVKr1T68kMa'
+  EMAILJS_PUBLIC_KEY: 'JqgAQZGOhbfOXu1TC'
 };
