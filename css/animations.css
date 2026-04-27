@@ -1,0 +1,139 @@
+/* ============================================================
+   ANIMATIONS — Scroll reveal, micro-interactions
+   ============================================================ */
+
+/* ── Reveal base states (set by JS via IntersectionObserver) ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+[data-reveal="left"] {
+  opacity: 0;
+  transform: translateX(-36px);
+}
+
+[data-reveal="right"] {
+  opacity: 0;
+  transform: translateX(36px);
+}
+
+[data-reveal="scale"] {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* ── Stagger delays ── */
+[data-delay="100"] { transition-delay: 0.1s; }
+[data-delay="200"] { transition-delay: 0.2s; }
+[data-delay="300"] { transition-delay: 0.3s; }
+[data-delay="400"] { transition-delay: 0.4s; }
+[data-delay="500"] { transition-delay: 0.5s; }
+[data-delay="600"] { transition-delay: 0.6s; }
+[data-delay="700"] { transition-delay: 0.7s; }
+[data-delay="800"] { transition-delay: 0.8s; }
+
+/* ── Fade in up keyframe ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Counter number count-up animation ── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Skill bar fill animation ── */
+@keyframes fillBar {
+  from { width: 0; }
+}
+
+/* ── Timeline line draw ── */
+@keyframes drawLine {
+  from { height: 0; }
+  to   { height: 100%; }
+}
+
+/* ── Pulse dot (online indicator) ── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.3); }
+}
+
+/* ── Shimmer loading ── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface) 25%,
+    var(--color-surface-3) 50%,
+    var(--color-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+}
+
+/* ── Hover lift ── */
+.hover-lift {
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Underline hover ── */
+.hover-underline {
+  position: relative;
+}
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width var(--t-base);
+}
+.hover-underline:hover::after { width: 100%; }
+
+/* ── Arrow bounce ── */
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+.animate-bounce { animation: arrowBounce 2s ease-in-out infinite; }

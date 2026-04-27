@@ -1,0 +1,129 @@
+/* ============================================================
+   MODAL — Resume PDF preview modal
+   ============================================================ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t-base);
+}
+
+.modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-2);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: var(--container-max);
+  max-height: 96vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.95) translateY(12px);
+  transition: transform var(--t-spring);
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-overlay.is-open .modal {
+  transform: scale(1) translateY(0);
+}
+
+/* ── Modal header ── */
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.modal__title {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  color: var(--color-text-primary);
+}
+
+.modal__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.modal__close {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  transition: all var(--t-fast);
+  font-size: 1.2rem;
+}
+
+.modal__close:hover {
+  color: var(--color-text-primary);
+  background: var(--color-surface-2);
+}
+
+/* ── Modal body ── */
+.modal__body {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.modal__iframe {
+  width: 100%;
+  height: 82vh;
+  border: none;
+  display: block;
+}
+
+/* ── Resume modal placeholder (when no PDF) ── */
+.resume-placeholder {
+  height: 82vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  color: var(--color-text-muted);
+  background: var(--color-surface-2);
+}
+
+.resume-placeholder__icon { font-size: 3rem; }
+.resume-placeholder__text { font-size: var(--text-sm); }
+
+/* ── Modal footer ── */
+.modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-8);
+  border-top: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .modal { border-radius: var(--radius-lg); }
+  .modal__header, .modal__footer { padding: var(--space-4) var(--space-5); }
+  .modal__iframe { height: 60vh; }
+  .resume-placeholder { height: 60vh; }
+}

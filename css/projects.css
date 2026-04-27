@@ -1,0 +1,209 @@
+/* ============================================================
+   PROJECTS GRID
+   ============================================================ */
+
+#projects {
+  padding: var(--section-padding) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.projects__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--space-12);
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.projects__filters {
+  display: flex;
+  gap: var(--space-2);
+  background: var(--color-surface);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: var(--t-fast);
+}
+
+.filter-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.filter-btn.active {
+  background: var(--color-surface-3);
+  color: var(--color-accent);
+}
+
+/* ── Grid layout ── */
+.projects__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-1);
+  margin-top: var(--space-12);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+/* ── Project card ── */
+.project-card {
+  padding: var(--space-8);
+  border: 1px solid transparent;
+  background: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+  transition: background var(--t-base), border-color var(--t-base);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.project-card:hover { background: var(--color-surface-2); }
+
+/* Top-right divider lines between cells */
+.project-card:nth-child(odd)  { border-right: 1px solid var(--color-border); }
+.project-card:nth-child(1),
+.project-card:nth-child(2)    { border-bottom: 1px solid var(--color-border); }
+
+/* ── Large background number ── */
+.project-card__num {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--color-border);
+  line-height: 1;
+  transition: color var(--t-base);
+  pointer-events: none;
+  user-select: none;
+  z-index: 10;
+}
+
+.project-card:hover .project-card__num { color: var(--color-border-2); }
+
+/* ── Thumbnail ── */
+.project-card__thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-3);
+  position: relative;
+}
+
+.project-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--t-slow);
+}
+
+.project-card:hover .project-card__thumb img {
+  transform: scale(1.05);
+}
+
+/* placeholder for missing thumb */
+.project-card__thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background: linear-gradient(135deg, var(--color-surface-2) 0%, var(--color-surface-3) 100%);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+}
+
+.project-card__thumb-icon { font-size: 2rem; opacity: 0.4; }
+
+/* ── Meta: title + timeline ── */
+.project-card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-4);
+}
+
+.project-card__title {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  transition: color var(--t-fast);
+}
+
+.project-card:hover .project-card__title { color: var(--color-accent); }
+
+.project-card__timeline {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+/* ── Problem + solution ── */
+.project-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+/* ── Impact metrics ── */
+.project-card__impact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.impact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-accent-2);
+}
+
+.impact-item::before {
+  content: '✦';
+  font-size: 8px;
+}
+
+/* ── Stack badges ── */
+.project-card__stack { margin-top: auto; }
+
+/* ── Footer links ── */
+.project-card__links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  gap: var(--space-3);
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .projects__grid { grid-template-columns: 1fr; gap: 0; }
+  .project-card:nth-child(odd)  { border-right: none; border-bottom: 1px solid var(--color-border); }
+  .project-card:nth-child(even) { border-bottom: 1px solid var(--color-border); }
+  .project-card:last-child { border-bottom: none; }
+  .project-card__num { font-size: 4rem; }
+}

@@ -1,0 +1,10 @@
+# Dependencies
+node_modules/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# NOTE: js/env.js is NOT ignored here because this is a Vanilla JS project.
+# Vercel needs to read this file to serve it to the browser.
+# Since EmailJS keys are public by design, it is 100% safe to commit js/env.js to GitHub!
