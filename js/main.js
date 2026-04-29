@@ -154,7 +154,7 @@
     if (!hero || !codeWindow) return;
 
     hero.addEventListener('mousemove', (e) => {
-      if (window.innerWidth <= 640) return; // Disabled on mobile
+      if (window.innerWidth <= 1024) return; // Disabled on mobile and tablet
       const rect = hero.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
