@@ -234,6 +234,7 @@
   line-height: 1.8;
   color: #A6ACCD;
   overflow-x: auto;
+  text-align: left;
 }
 
 .code-window__body pre {
