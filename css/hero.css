@@ -252,10 +252,16 @@
 .token-method { color: #82AAFF; }
 
 @media (max-width: 1024px) {
+  #hero {
+    justify-content: flex-start;
+    padding-top: calc(var(--navbar-h) + var(--space-8));
+  }
+  
   .hero__inner {
     grid-template-columns: 1fr;
-    gap: var(--space-10);
+    gap: var(--space-8);
     text-align: center;
+    padding-top: 0;
   }
   
   .hero__content {
@@ -267,7 +273,7 @@
   }
   
   .hero__tagline {
-    margin: 0 auto var(--space-8) auto;
+    margin: 0 auto var(--space-6) auto;
   }
   
   .hero__cta {
@@ -276,11 +282,25 @@
 }
 
 @media (max-width: 640px) {
+  .hero__inner {
+    gap: var(--space-6);
+  }
+  
   .code-window {
     transform: none !important; /* Disable 3D tilt on mobile */
+    max-width: 100%;
   }
   
   .hero__badge {
     font-size: 0.6rem;
+    margin-bottom: var(--space-5);
+  }
+  
+  .hero__title {
+    margin-bottom: var(--space-5);
+  }
+  
+  .hero__socials {
+    margin-bottom: var(--space-6);
   }
 }
