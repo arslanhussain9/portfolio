@@ -202,8 +202,10 @@
 
 @media (max-width: 768px) {
   .projects__grid { grid-template-columns: 1fr; gap: 0; }
+  .project-card { padding: var(--space-5); gap: var(--space-4); }
   .project-card:nth-child(odd)  { border-right: none; border-bottom: 1px solid var(--color-border); }
   .project-card:nth-child(even) { border-bottom: 1px solid var(--color-border); }
   .project-card:last-child { border-bottom: none; }
-  .project-card__num { font-size: 4rem; }
+  .project-card__num { font-size: 3.5rem; top: var(--space-4); right: var(--space-4); }
+  .projects__header { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
 }
